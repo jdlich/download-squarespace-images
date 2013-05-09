@@ -2,7 +2,7 @@ Script for downloading your Squarespace blog images in lieu of an export feature
 
 ### How to Use
 
-Run this script via Rake, like so:
+Run via Rake, like so:
 
     rake download_images[BLOG_URL]
 
@@ -14,7 +14,7 @@ Where `BLOG_URL` is the absolute URL to your Squarespace site.
 
 **Download Location**
 
-By default, images are downloaded into a coresponding directory for each post in `images/`.
+By default, images are downloaded into a corresponding directory for each post in `images/`.
 
 ### Windows
 
