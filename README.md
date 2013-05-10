@@ -2,16 +2,17 @@ Script for downloading Squarespace blog images in lieu of an export feature (e.g
 
 ## How to Use
 
-Run via Rake, like so (first grab the gem dependencies):
+Install gem dependencies:
 
-    bundle install
-    rake download_images[BLOG_URL]
+    $ bundle install
 
-Where `BLOG_URL` is the absolute URL to your Squarespace site.
+Run script via Rake (where `BLOG_URL` is the absolute URL to your Squarespace site):
+
+    $ rake download_images[BLOG_URL]
 
 **Example**
 
-    rake download_images[http://montessorium.com/blog]
+    $ rake download_images[http://montessorium.com/blog]
 
 **Download Location**
 
@@ -31,7 +32,7 @@ It also gives us the total number of posts (itemCount). Total posts divided by 2
 
 **Get Posts via JSON**
 
-Next we replace each page URL with an array of the page's items (i.e. posts), which are also instantiated as new `SS::Post` objects. After we flatten this array of arrays of post objects, we get one big array of squarespace posts.
+Next we replace each page URL with an array of the page's items (i.e. posts). At this point we have an array of arrays of posts, so we use `Array#flatten`. Now, we have all blog posts in a single array.
 
     page_urls.map do |url|
       json = JSON.load(open(url))
@@ -40,7 +41,7 @@ Next we replace each page URL with an array of the page's items (i.e. posts), wh
 
 **Get Image URLs with Nokogiri**
 
-Nokogiri is used to scrape the body of each post and return a collection of Squarespace image URLs via the `data-src` attribute on `<img>` tags.
+Nokogiri is used to scrape the body of each post for the `data-src` attribute on `<img>` tags and return an array of Squarespace image URLs.
 
     html.css('img[data-src]').map { |img| img.attr('data-src') }
 
