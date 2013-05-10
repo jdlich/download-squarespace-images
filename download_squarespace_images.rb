@@ -31,22 +31,17 @@ module SS
   class Blog
   
     def initialize(url)
-      @url  = url.gsub(/\/$/,'') # drop trailing slash if there is one
+      @url = url.gsub(/\/$/,'') # drop trailing slash if there is one
       json?(@url)
       valid?(@json)
     end
     
     def posts
-      page_urls.map do |url|
-        json = JSON.load(open(url))
+      Array(0..num_of_pages).map do |n|
+        page = @url + "?page=#{n}&format=json"
+        json = JSON.load(open(page))
         json["items"].map { |i| SS::Post.new(i) }
       end.flatten
-    end
-  
-    def page_urls
-      Array(0..num_of_pages).map do |n|
-        @url + "?page=#{n}&format=json"
-      end
     end
   
     def num_of_pages

@@ -32,10 +32,11 @@ It also gives us the total number of posts (itemCount). Total posts divided by 2
 
 **Get Posts via JSON**
 
-Next we replace each page URL with an array of the page's items (i.e. posts). At this point we have an array of arrays of posts, so we use `Array#flatten`. Now, we have all blog posts in a single array.
+While we are constructing the pages, we replace each page with an array of the page's items (i.e. posts). This results in an array of arrays of posts, so we use `Array#flatten` to get all blog posts in a single array.
 
-    page_urls.map do |url|
-      json = JSON.load(open(url))
+    Array(0..num_of_pages).map do |n|
+      page = @url + "?page=#{n}&format=json"
+      json = JSON.load(open(page))
       json["items"].map { |i| SS::Post.new(i) }
     end.flatten
 
