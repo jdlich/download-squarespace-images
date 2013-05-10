@@ -1,6 +1,6 @@
 Script for downloading Squarespace blog images in lieu of an export feature (e.g. when moving to Wordpress).
 
-### How to Use
+## How to Use
 
 Run via Rake, like so (first grab the gem dependencies):
 
