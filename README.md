@@ -6,7 +6,7 @@ Install gem dependencies:
 
     $ bundle install
 
-Run script via Rake (where `BLOG_URL` is the absolute URL to your Squarespace site):
+Run script via Rake (where `BLOG_URL` is the absolute URL to your Squarespace blog, which is not necessarily your home page):
 
     $ rake download_images[BLOG_URL]
 
