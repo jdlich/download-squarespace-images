@@ -31,7 +31,7 @@ module SS
   class Blog
   
     def initialize(url)
-      @url = url.gsub(/\/$/,'') # drop trailing slash if there is one
+      @url = url.gsub(/\/$/,'') # to avoid a double slash
       json?(@url)
       valid?(@json)
     end
