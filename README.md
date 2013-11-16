@@ -2,11 +2,16 @@ Script for downloading Squarespace blog images in lieu of an export feature (e.g
 
 ## How to Use
 
+First, clone this repository:
+
+    $ git clone git@github.com:jdlich/download-squarespace-images.git
+    $ cd download-squarespace-images
+
 Install gem dependencies:
 
     $ bundle install
 
-Run script via Rake (where `BLOG_URL` is the absolute URL to your Squarespace blog, which is not necessarily your home page):
+To download squarespace images, run the script via Rake (where `BLOG_URL` is the absolute URL to your Squarespace blog, which is not necessarily your home page):
 
     $ rake download_images[BLOG_URL]
 
@@ -16,7 +21,7 @@ Run script via Rake (where `BLOG_URL` is the absolute URL to your Squarespace bl
 
 **Download Location**
 
-By default, images are downloaded into a corresponding directory for each post in `images/`.
+By default, images are downloaded into a corresponding directory for each post to `./images`.
 
 ## How it Works
 
